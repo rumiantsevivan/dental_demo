@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доктор Плюс — Современная стоматология</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+        }
+
+        .gradient-blue-bg {
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 50%, #eff6ff 100%);
+        }
+
+        .gradient-blue-solid {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        }
+
+        .card {
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .icon-circle {
+            transition: all 0.3s ease;
+        }
+
+        .group:hover .icon-circle {
+            background-color: #2563eb;
+            transform: scale(1.1);
+        }
+
+        .group:hover .icon-white {
+            color: white;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1.125rem;
+        }
+
+        .btn-primary {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .btn-white {
+            background-color: white;
+            color: #2563eb;
+        }
+
+        .btn-white:hover {
+            background-color: #eff6ff;
+        }
+
+        .blur-circle {
+            filter: blur(60px);
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Hero Section -->
+    <section class="relative gradient-bg py-20 lg:py-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="space-y-4">
+                        <h1 class="text-4xl lg:text-6xl font-bold text-gray-900">
+                            Доктор Плюс
+                        </h1>
+                        <p class="text-2xl lg:text-3xl text-blue-600 font-light">
+                            Современная стоматология для вашей улыбки
+                        </p>
+                        <p class="text-lg text-gray-600 max-w-xl">
+                            Профессиональное лечение зубов с применением новейших технологий и индивидуальным подходом к каждому пациенту
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="scrollToSection('contacts')" class="btn btn-primary px-8 py-6">
+                            Записаться на прием
+                        </button>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="images/image_1.jpg" 
+                             alt="Современная стоматологическая клиника Доктор Плюс"
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-500 rounded-full opacity-20 blur-circle"></div>
+                    <div class="absolute -top-6 -left-6 w-40 h-40 bg-blue-300 rounded-full opacity-20 blur-circle"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 space-y-4">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">
+                    Наши услуги
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Полный спектр стоматологических услуг для здоровья и красоты вашей улыбки
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="card border-2 border-gray-100 hover:border-blue-200 hover:shadow-lg rounded-lg p-8 space-y-4 group">
+                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 icon-white">
+                            <path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900">
+                        Лечение зубов
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Профессиональное лечение кариеса и других заболеваний зубов с применением современных материалов
+                    </p>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="card border-2 border-gray-100 hover:border-blue-200 hover:shadow-lg rounded-lg p-8 space-y-4 group">
+                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 icon-white">
+                            <rect width="18" height="18" x="3" y="3" rx="2"/>
+                            <path d="M3 9h18"/>
+                            <path d="M9 21V9"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900">
+                        Имплантация
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Восстановление утраченных зубов с помощью надежных имплантов премиум-класса
+                    </p>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="card border-2 border-gray-100 hover:border-blue-200 hover:shadow-lg rounded-lg p-8 space-y-4 group">
+                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 icon-white">
+                            <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+                            <path d="M5 3v4"/>
+                            <path d="M19 17v4"/>
+                            <path d="M3 5h4"/>
+                            <path d="M17 19h4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900">
+                        Профессиональная чистка
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Комплексная гигиена полости рта для здоровья зубов и десен
+                    </p>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="card border-2 border-gray-100 hover:border-blue-200 hover:shadow-lg rounded-lg p-8 space-y-4 group">
+                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 icon-white">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900">
+                        Отбеливание
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Безопасное отбеливание зубов для белоснежной улыбки
+                    </p>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="card border-2 border-gray-100 hover:border-blue-200 hover:shadow-lg rounded-lg p-8 space-y-4 group">
+                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 icon-white">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                            <line x1="9" x2="9.01" y1="9" y2="9"/>
+                            <line x1="15" x2="15.01" y1="9" y2="9"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900">
+                        Ортодонтия
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Исправление прикуса и выравнивание зубов для красивой улыбки
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="py-20 gradient-blue-bg">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 space-y-4">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">
+                    Почему выбирают нас
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Мы создаем условия для качественного лечения и комфорта наших пациентов
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Advantage 1 -->
+                <div class="text-center space-y-4 group">
+                    <div class="mx-auto w-20 h-20 bg-white rounded-full shadow-lg flex items-center justify-center hover:shadow-xl hover:scale-110 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600">
+                            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+                            <path d="m9 12 2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 px-4">
+                        Современное оборудование
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed px-4">
+                        Используем новейшие технологии и материалы мировых производителей
+                    </p>
+                </div>
+
+                <!-- Advantage 2 -->
+                <div class="text-center space-y-4 group">
+                    <div class="mx-auto w-20 h-20 bg-white rounded-full shadow-lg flex items-center justify-center hover:shadow-xl hover:scale-110 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600">
+                            <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/>
+                            <circle cx="12" cy="8" r="6"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 px-4">
+                        Опытные врачи
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed px-4">
+                        Команда профессионалов с многолетним опытом и постоянным повышением квалификации
+                    </p>
+                </div>
+
+                <!-- Advantage 3 -->
+                <div class="text-center space-y-4 group">
+                    <div class="mx-auto w-20 h-20 bg-white rounded-full shadow-lg flex items-center justify-center hover:shadow-xl hover:scale-110 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600">
+                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 px-4">
+                        Комфортное лечение
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed px-4">
+                        Безболезненные процедуры в уютной атмосфере с заботой о вашем комфорте
+                    </p>
+                </div>
+
+                <!-- Advantage 4 -->
+                <div class="text-center space-y-4 group">
+                    <div class="mx-auto w-20 h-20 bg-white rounded-full shadow-lg flex items-center justify-center hover:shadow-xl hover:scale-110 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 px-4">
+                        Внимательное отношение
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed px-4">
+                        Индивидуальный подход к каждому пациенту и забота о вашем здоровье
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="relative order-2 lg:order-1">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="images/image_2.jpg" 
+                             alt="Счастливая пациентка клиники Доктор Плюс"
+                             class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="space-y-6 order-1 lg:order-2">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">
+                        О клинике Доктор Плюс
+                    </h2>
+                    <div class="space-y-4 text-gray-600 text-lg leading-relaxed">
+                        <p>
+                            Мы — современная стоматологическая клиника, которая объединяет передовые технологии, высокий профессионализм врачей и искреннюю заботу о пациентах.
+                        </p>
+                        <p>
+                            Наша философия проста: каждый человек заслуживает здоровую и красивую улыбку. Мы создаем комфортную атмосферу, используем только проверенные методики и материалы, а главное — относимся к каждому пациенту с вниманием и уважением.
+                        </p>
+                        <p>
+                            В клинике Доктор Плюс вы получите качественное лечение без боли и стресса. Доверьте свою улыбку профессионалам!
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-6 pt-8">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-blue-600">15+</div>
+                            <div class="text-gray-600 mt-2">лет опыта</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-blue-600">5000+</div>
+                            <div class="text-gray-600 mt-2">пациентов</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-blue-600">100%</div>
+                            <div class="text-gray-600 mt-2">качество</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Section -->
+    <section id="appointment" class="py-20 gradient-blue-solid text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <img src="images/image_3.jpg" 
+                 alt="Профессиональная стоматология"
+                 class="w-full h-full object-cover">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl mx-auto text-center space-y-8">
+                <h2 class="text-3xl lg:text-4xl font-bold">
+                    Запишитесь на прием прямо сейчас
+                </h2>
+                <p class="text-xl text-blue-100">
+                    Позаботьтесь о здоровье своих зубов. Наши специалисты ждут вас!
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center pt-4">
+                    <div class="flex items-center gap-3 text-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M8 2v4"/>
+                            <path d="M16 2v4"/>
+                            <rect width="18" height="18" x="3" y="4" rx="2"/>
+                            <path d="M3 10h18"/>
+                        </svg>
+                        <span>Удобное время</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        <span>Без очередей</span>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <button onclick="scrollToSection('contacts')" class="btn btn-white px-10 py-6 shadow-xl hover:shadow-2xl">
+                        Записаться на прием
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-blue-400 rounded-full opacity-20 blur-circle"></div>
+        <div class="absolute -top-20 -right-20 w-80 h-80 bg-blue-300 rounded-full opacity-20 blur-circle"></div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section id="contacts" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 space-y-4">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">
+                    Контакты
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Свяжитесь с нами удобным способом. Мы всегда рады ответить на ваши вопросы!
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Contact 1 -->
+                <a href="tel:+79001234567" class="block">
+                    <div class="gradient-bg p-8 rounded-2xl border-2 border-blue-100 hover:border-blue-300 hover:shadow-lg transition-all duration-300 h-full group">
+                        <div class="flex flex-col items-center text-center space-y-4">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center icon-circle">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 icon-white">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <div class="space-y-2">
+                                <h3 class="text-lg font-semibold text-gray-900">
+                                    Телефон
+                                </h3>
+                                <p class="text-gray-600 font-medium">
+                                    +7 (900) 123-45-67
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Contact 2 -->
+                <a href="https://t.me/doctorplus" target="_blank" rel="noopener noreferrer" class="block">
+                    <div class="gradient-bg p-8 rounded-2xl border-2 border-blue-100 hover:border-blue-300 hover:shadow-lg transition-all duration-300 h-full group">
+                        <div class="flex flex-col items-center text-center space-y-4">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center icon-circle">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 icon-white">
+                                    <path d="m22 2-7 20-4-9-9-4Z"/>
+                                    <path d="M22 2 11 13"/>
+                                </svg>
+                            </div>
+                            <div class="space-y-2">
+                                <h3 class="text-lg font-semibold text-gray-900">
+                                    Telegram
+                                </h3>
+                                <p class="text-gray-600 font-medium">
+                                    @doctorplus
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Contact 3 -->
+                <a href="mailto:info@doctorplus.ru" class="block">
+                    <div class="gradient-bg p-8 rounded-2xl border-2 border-blue-100 hover:border-blue-300 hover:shadow-lg transition-all duration-300 h-full group">
+                        <div class="flex flex-col items-center text-center space-y-4">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center icon-circle">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 icon-white">
+                                    <rect width="20" height="16" x="2" y="4" rx="2"/>
+                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                                </svg>
+                            </div>
+                            <div class="space-y-2">
+                                <h3 class="text-lg font-semibold text-gray-900">
+                                    E-mail
+                                </h3>
+                                <p class="text-gray-600 font-medium">
+                                    info@doctorplus.ru
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Contact 4 -->
+                <div>
+                    <div class="gradient-bg p-8 rounded-2xl border-2 border-blue-100 hover:border-blue-300 hover:shadow-lg transition-all duration-300 h-full group">
+                        <div class="flex flex-col items-center text-center space-y-4">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center icon-circle">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 icon-white">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="space-y-2">
+                                <h3 class="text-lg font-semibold text-gray-900">
+                                    Адрес
+                                </h3>
+                                <p class="text-gray-600 font-medium">
+                                    Москва, ул. Примерная, д. 10
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-bold text-white">Доктор Плюс</h3>
+                    <p class="text-gray-400 max-w-md">
+                        Современная стоматологическая клиника с заботой о вашей улыбке
+                    </p>
+                </div>
+                
+                <div class="space-y-4">
+                    <h4 class="text-lg font-semibold text-white">Часы работы</h4>
+                    <div class="space-y-2 text-gray-400">
+                        <p>Понедельник - Пятница: 9:00 - 20:00</p>
+                        <p>Суббота: 10:00 - 18:00</p>
+                        <p>Воскресенье: выходной</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; 2026 Доктор Плюс. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+
+</body>
+</html>
