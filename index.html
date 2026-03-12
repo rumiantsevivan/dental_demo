@@ -1,543 +1,1602 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Доктор Плюс — Современная стоматология</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            scroll-behavior: smooth;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>«Доктор Плюс» — Медицинский центр</title>
+  <style>
+    :root{
+      --bg-1:#dff4ff;
+      --bg-2:#c9eeff;
+      --bg-3:#9fdfff;
+      --bg-4:#6ec8ff;
+      --bg-5:#3daef8;
+      --deep:#0f5da3;
+      --text:#0d3e73;
+      --text-soft:#37689a;
+      --white:rgba(255,255,255,.92);
+      --glass:rgba(255,255,255,.26);
+      --glass-2:rgba(255,255,255,.38);
+      --line:rgba(255,255,255,.42);
+      --shadow:0 18px 45px rgba(19, 94, 162, .18);
+      --shadow-soft:0 10px 25px rgba(26, 101, 171, .13);
+      --radius-xl:34px;
+      --radius-lg:26px;
+      --radius-md:20px;
+      --radius-sm:16px;
+    }
 
-        .gradient-bg {
-            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
-        }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255,255,255,.98), transparent 18%),
+        radial-gradient(circle at 90% 8%, rgba(255,255,255,.8), transparent 14%),
+        radial-gradient(circle at 85% 28%, rgba(255,255,255,.42), transparent 18%),
+        radial-gradient(circle at 20% 34%, rgba(255,255,255,.55), transparent 20%),
+        linear-gradient(180deg, #edfaff 0%, #d8f1ff 14%, #bce7ff 36%, #d9f4ff 58%, #b8e4ff 78%, #eefbff 100%);
+      min-height:100vh;
+      overflow-x:hidden;
+      position:relative;
+    }
 
-        .gradient-blue-bg {
-            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 50%, #eff6ff 100%);
-        }
+    body::before,
+    body::after{
+      content:"";
+      position:fixed;
+      inset:auto;
+      pointer-events:none;
+      z-index:0;
+      filter:blur(1px);
+      opacity:.65;
+    }
 
-        .gradient-blue-solid {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-        }
+    body::before{
+      width:680px;
+      height:680px;
+      left:-180px;
+      top:-120px;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,.7) 0 14%, transparent 14.5%),
+        radial-gradient(circle at 50% 50%, rgba(110,200,255,.18) 18%, transparent 19%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,.26) 25%, transparent 26%),
+        radial-gradient(circle at 50% 50%, rgba(110,200,255,.14) 32%, transparent 33%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,.18) 39%, transparent 40%);
+      border-radius:50%;
+      transform:rotate(8deg);
+    }
 
-        .card {
-            transition: all 0.3s ease;
-        }
+    body::after{
+      right:-160px;
+      bottom:-110px;
+      width:620px;
+      height:620px;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,.76) 0 12%, transparent 12.5%),
+        radial-gradient(circle at 50% 50%, rgba(110,200,255,.18) 17%, transparent 17.5%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,.22) 24%, transparent 24.5%),
+        radial-gradient(circle at 50% 50%, rgba(110,200,255,.14) 31%, transparent 31.5%);
+      border-radius:50%;
+    }
 
-        .card:hover {
-            transform: translateY(-4px);
-        }
+    .page{
+      position:relative;
+      z-index:1;
+      width:min(1180px, calc(100% - 28px));
+      margin:22px auto 38px;
+    }
 
-        .icon-circle {
-            transition: all 0.3s ease;
-        }
+    .top-ribbons,
+    .bottom-ribbons{
+      position:absolute;
+      left:-20px;
+      right:-20px;
+      height:180px;
+      pointer-events:none;
+      z-index:-1;
+      opacity:.7;
+    }
 
-        .group:hover .icon-circle {
-            background-color: #2563eb;
-            transform: scale(1.1);
-        }
+    .top-ribbons{
+      top:-12px;
+      background:
+        radial-gradient(circle at 18% 28%, rgba(255,255,255,.85) 0 1.5px, transparent 2px),
+        radial-gradient(circle at 74% 20%, rgba(255,255,255,.88) 0 1.5px, transparent 2px),
+        radial-gradient(circle at 86% 34%, rgba(255,255,255,.8) 0 2px, transparent 2.5px),
+        linear-gradient(110deg, transparent 0 7%, rgba(255,255,255,.36) 12%, transparent 18% 100%),
+        linear-gradient(105deg, transparent 0 20%, rgba(255,255,255,.5) 25%, transparent 31% 100%),
+        linear-gradient(98deg, transparent 0 34%, rgba(255,255,255,.3) 40%, transparent 46% 100%);
+      filter:blur(.2px);
+    }
 
-        .group:hover .icon-white {
-            color: white;
-        }
+    .bottom-ribbons{
+      bottom:110px;
+      background:
+        radial-gradient(circle at 12% 75%, rgba(255,255,255,.9) 0 2px, transparent 2.5px),
+        radial-gradient(circle at 84% 64%, rgba(255,255,255,.84) 0 2px, transparent 2.5px),
+        linear-gradient(70deg, transparent 0 14%, rgba(255,255,255,.38) 19%, transparent 26% 100%),
+        linear-gradient(74deg, transparent 0 34%, rgba(255,255,255,.34) 39%, transparent 46% 100%);
+    }
 
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 1.125rem;
-        }
+    .panel{
+      position:relative;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.48), rgba(255,255,255,.16)),
+        linear-gradient(135deg, rgba(255,255,255,.18), rgba(130,210,255,.18));
+      border:1px solid rgba(255,255,255,.48);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
 
-        .btn-primary {
-            background-color: #2563eb;
-            color: white;
-        }
+    .panel::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.65), transparent 28%),
+        radial-gradient(circle at 15% 18%, rgba(255,255,255,.35), transparent 20%),
+        radial-gradient(circle at 85% 85%, rgba(255,255,255,.22), transparent 18%);
+      pointer-events:none;
+    }
 
-        .btn-primary:hover {
-            background-color: #1d4ed8;
-            transform: translateY(-2px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
+    .hero{
+      border-radius:40px;
+      padding:26px;
+      min-height:740px;
+      display:grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap:22px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.38), rgba(255,255,255,.15)),
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,.72), transparent 18%),
+        radial-gradient(circle at 82% 8%, rgba(255,255,255,.6), transparent 12%),
+        radial-gradient(circle at 88% 64%, rgba(255,255,255,.35), transparent 20%),
+        linear-gradient(135deg, rgba(200,241,255,.9), rgba(130,205,255,.64) 50%, rgba(230,249,255,.8) 100%);
+      border:1px solid rgba(255,255,255,.58);
+      box-shadow:
+        0 25px 60px rgba(33, 104, 171, .16),
+        inset 0 1px 0 rgba(255,255,255,.7);
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
+    }
 
-        .btn-white {
-            background-color: white;
-            color: #2563eb;
-        }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 8% 12%, rgba(255,255,255,.8) 0 1.5px, transparent 2px),
+        radial-gradient(circle at 19% 8%, rgba(255,255,255,.7) 0 2px, transparent 2.5px),
+        radial-gradient(circle at 54% 14%, rgba(255,255,255,.82) 0 1.8px, transparent 2.4px),
+        radial-gradient(circle at 72% 10%, rgba(255,255,255,.86) 0 2px, transparent 2.6px),
+        radial-gradient(circle at 91% 22%, rgba(255,255,255,.78) 0 2px, transparent 2.7px);
+      opacity:.95;
+      pointer-events:none;
+    }
 
-        .btn-white:hover {
-            background-color: #eff6ff;
-        }
+    .hero-bg-lines{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity:.75;
+      background:
+        radial-gradient(circle at 92% 14%, rgba(255,255,255,.7), transparent 12%),
+        linear-gradient(100deg, transparent 0 10%, rgba(255,255,255,.34) 13%, transparent 18% 100%),
+        linear-gradient(104deg, transparent 0 17%, rgba(255,255,255,.4) 20%, transparent 24% 100%),
+        linear-gradient(107deg, transparent 0 25%, rgba(255,255,255,.24) 28%, transparent 32% 100%),
+        linear-gradient(110deg, transparent 0 34%, rgba(255,255,255,.3) 37%, transparent 41% 100%),
+        linear-gradient(112deg, transparent 0 43%, rgba(255,255,255,.2) 46%, transparent 50% 100%);
+      filter:blur(.1px);
+    }
 
-        .blur-circle {
-            filter: blur(60px);
-        }
-    </style>
+    .hero-bloom{
+      position:absolute;
+      width:400px;
+      height:400px;
+      right:-70px;
+      top:110px;
+      border-radius:50%;
+      background:
+        radial-gradient(circle, rgba(255,255,255,.7) 0%, rgba(203,242,255,.55) 28%, rgba(122,204,255,.18) 58%, transparent 76%);
+      filter:blur(10px);
+      opacity:.8;
+      pointer-events:none;
+    }
+
+    .hero-left,
+    .hero-right{
+      position:relative;
+      z-index:2;
+    }
+
+    .brand-card{
+      border-radius:30px;
+      padding:22px 22px 18px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.68), rgba(255,255,255,.24)),
+        linear-gradient(135deg, rgba(255,255,255,.16), rgba(104,191,246,.14));
+      border:1px solid rgba(255,255,255,.65);
+      box-shadow:
+        0 10px 30px rgba(43, 122, 190, .12),
+        inset 0 1px 0 rgba(255,255,255,.75);
+      display:flex;
+      align-items:center;
+      gap:18px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .brand-card::after{
+      content:"";
+      position:absolute;
+      left:14px;
+      right:14px;
+      top:0;
+      height:46px;
+      background:linear-gradient(180deg, rgba(255,255,255,.48), transparent);
+      border-radius:0 0 26px 26px;
+      pointer-events:none;
+    }
+
+    .logo{
+      width:102px;
+      height:102px;
+      border-radius:28px;
+      position:relative;
+      flex:0 0 auto;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.95), rgba(255,255,255,.2) 24%, transparent 25%),
+        linear-gradient(145deg, #46c1ff 0%, #1675cf 54%, #5fd0ff 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.9),
+        inset 0 -10px 20px rgba(0,74,141,.18),
+        0 10px 24px rgba(23, 107, 190, .24);
+    }
+
+    .logo::before,
+    .logo::after{
+      content:"";
+      position:absolute;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.98), rgba(220,245,255,.95));
+      border-radius:12px;
+      box-shadow:
+        inset 0 -2px 8px rgba(0,0,0,.06),
+        0 1px 0 rgba(255,255,255,.9);
+    }
+
+    .logo::before{
+      width:22px;
+      height:62px;
+      left:50%;
+      top:50%;
+      transform:translate(-50%, -50%);
+    }
+
+    .logo::after{
+      width:62px;
+      height:22px;
+      left:50%;
+      top:50%;
+      transform:translate(-50%, -50%);
+    }
+
+    .brand-text h1{
+      margin:0;
+      font-size:clamp(38px, 6vw, 64px);
+      line-height:.95;
+      letter-spacing:.02em;
+      color:#1263af;
+      text-shadow:0 1px 0 rgba(255,255,255,.75);
+    }
+
+    .brand-text p{
+      margin:8px 0 0;
+      font-size:clamp(18px, 2vw, 28px);
+      color:#2d5f92;
+      font-weight:700;
+    }
+
+    .hero-copy{
+      padding:22px 8px 0;
+    }
+
+    .slogan{
+      margin:10px 0 18px;
+      font-size:clamp(30px, 3.8vw, 54px);
+      line-height:1.06;
+      font-weight:800;
+      color:#164a84;
+      text-shadow:0 1px 0 rgba(255,255,255,.88);
+      max-width:740px;
+    }
+
+    .lead{
+      max-width:640px;
+      margin:0 0 24px;
+      color:var(--text-soft);
+      font-size:18px;
+      line-height:1.55;
+      font-weight:700;
+    }
+
+    .quick-points{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:14px;
+      margin-bottom:24px;
+    }
+
+    .pill{
+      border-radius:999px;
+      padding:12px 16px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.28)),
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(57,170,246,.12));
+      border:1px solid rgba(255,255,255,.62);
+      box-shadow:var(--shadow-soft);
+      color:#1d568d;
+      font-weight:700;
+      font-size:15px;
+      text-align:center;
+    }
+
+    .hero-advantages{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+      max-width:640px;
+      margin-bottom:22px;
+    }
+
+    .adv{
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      padding:16px 18px;
+      border-radius:22px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.68), rgba(255,255,255,.22)),
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(60,174,248,.14));
+      border:1px solid rgba(255,255,255,.6);
+      box-shadow:var(--shadow-soft);
+    }
+
+    .adv-icon{
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      flex:0 0 auto;
+      display:grid;
+      place-items:center;
+      font-size:18px;
+      color:#0f66b2;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.95), rgba(255,255,255,.4) 30%, transparent 31%),
+        linear-gradient(145deg, rgba(255,255,255,.9), rgba(162,223,255,.7));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.95),
+        0 6px 12px rgba(44,118,186,.12);
+    }
+
+    .adv h3{
+      margin:0 0 5px;
+      font-size:18px;
+      color:#1b4d81;
+    }
+
+    .adv p{
+      margin:0;
+      font-size:14px;
+      line-height:1.5;
+      color:#426f9c;
+      font-weight:700;
+    }
+
+    .cta-row{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      padding-top:2px;
+    }
+
+    .btn{
+      appearance:none;
+      border:none;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:54px;
+      padding:0 22px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:15px;
+      letter-spacing:.02em;
+      cursor:pointer;
+      transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{
+      color:#fff;
+      background:
+        linear-gradient(180deg, #4ac4ff 0%, #1880d7 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.6),
+        0 12px 22px rgba(21, 112, 192, .28);
+    }
+
+    .btn-secondary{
+      color:#14528f;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.34)),
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(60,174,248,.12));
+      border:1px solid rgba(255,255,255,.65);
+      box-shadow:var(--shadow-soft);
+    }
+
+    .hero-right{
+      display:grid;
+      grid-template-rows:auto auto 1fr;
+      gap:18px;
+      align-content:start;
+    }
+
+    .promo-card{
+      border-radius:32px;
+      padding:20px 22px;
+      position:relative;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.22)),
+        linear-gradient(135deg, rgba(255,255,255,.12), rgba(49,166,245,.18));
+      border:1px solid rgba(255,255,255,.72);
+      box-shadow:
+        0 14px 32px rgba(25, 111, 189, .18),
+        inset 0 1px 0 rgba(255,255,255,.86);
+      overflow:hidden;
+    }
+
+    .promo-card::before{
+      content:"";
+      position:absolute;
+      inset:12px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.38);
+      pointer-events:none;
+    }
+
+    .promo-card::after{
+      content:"";
+      position:absolute;
+      right:-34px;
+      top:-34px;
+      width:130px;
+      height:130px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,.75), rgba(255,255,255,.1) 55%, transparent 70%);
+      filter:blur(2px);
+      pointer-events:none;
+    }
+
+    .promo-top{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#0f5ea7;
+      font-weight:900;
+      font-size:28px;
+      line-height:1;
+      margin-bottom:10px;
+    }
+
+    .promo-badge{
+      width:48px;
+      height:48px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      font-size:24px;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.95), rgba(255,255,255,.3) 28%, transparent 29%),
+        linear-gradient(145deg, #76d8ff, #2b92e0 60%, #89e1ff);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.85),
+        0 8px 18px rgba(18, 107, 187, .22);
+    }
+
+    .promo-title{
+      margin:0;
+      font-size:18px;
+      color:#2f679c;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+
+    .promo-discount{
+      margin:8px 0 0;
+      font-size:clamp(30px, 4.2vw, 54px);
+      line-height:.95;
+      font-weight:900;
+      color:#1f5f99;
+      text-shadow:0 1px 0 rgba(255,255,255,.85);
+    }
+
+    .promo-note{
+      margin:8px 0 0;
+      color:#44709b;
+      font-weight:700;
+      font-size:15px;
+    }
+
+    .decor-orbs{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+      padding-top:10px;
+    }
+
+    .orb{
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.98), rgba(255,255,255,.45) 32%, rgba(93,185,245,.65) 60%, rgba(33,119,195,.85) 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.95),
+        0 4px 10px rgba(30, 103, 175, .16);
+      opacity:.88;
+    }
+
+    .services-mini{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:14px;
+    }
+
+    .service-mini{
+      border-radius:24px;
+      padding:18px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.68), rgba(255,255,255,.18)),
+        linear-gradient(135deg, rgba(255,255,255,.1), rgba(60,174,248,.12));
+      border:1px solid rgba(255,255,255,.6);
+      box-shadow:var(--shadow-soft);
+    }
+
+    .service-mini .icon{
+      width:42px;
+      height:42px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      font-size:20px;
+      margin-bottom:10px;
+      color:#1162ad;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.92), rgba(170,230,255,.74));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.95),
+        0 8px 14px rgba(43, 122, 190, .12);
+    }
+
+    .service-mini h4{
+      margin:0 0 6px;
+      font-size:18px;
+      color:#1d568a;
+    }
+
+    .service-mini p{
+      margin:0;
+      font-size:14px;
+      line-height:1.5;
+      color:#486f98;
+      font-weight:700;
+    }
+
+    .contact-card{
+      border-radius:30px;
+      padding:20px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.74), rgba(255,255,255,.2)),
+        linear-gradient(135deg, rgba(255,255,255,.12), rgba(50,170,245,.16));
+      border:1px solid rgba(255,255,255,.7);
+      box-shadow:var(--shadow-soft);
+    }
+
+    .contact-card h3{
+      margin:0 0 14px;
+      font-size:22px;
+      color:#1a548d;
+    }
+
+    .contact-list{
+      display:grid;
+      gap:10px;
+    }
+
+    .contact-item{
+      display:grid;
+      grid-template-columns:36px 1fr;
+      gap:12px;
+      align-items:start;
+      color:#2f6497;
+      font-weight:700;
+      font-size:15px;
+    }
+
+    .contact-item .c-icon{
+      width:36px;
+      height:36px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.94), rgba(171,230,255,.74));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.95),
+        0 6px 12px rgba(38, 114, 186, .12);
+      color:#0d61aa;
+      font-size:18px;
+    }
+
+    .contact-item strong{
+      display:block;
+      color:#154c84;
+      margin-bottom:2px;
+    }
+
+    .content-section{
+      margin-top:24px;
+      padding:24px;
+      border-radius:34px;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+    }
+
+    .section-title{
+      margin:0;
+      font-size:clamp(26px, 3vw, 38px);
+      color:#154c86;
+      text-shadow:0 1px 0 rgba(255,255,255,.72);
+    }
+
+    .section-sub{
+      margin:6px 0 0;
+      color:#49729b;
+      font-weight:700;
+      font-size:15px;
+      max-width:720px;
+    }
+
+    .section-chip{
+      border-radius:999px;
+      padding:10px 16px;
+      color:#1c578f;
+      font-weight:800;
+      font-size:14px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.26)),
+        linear-gradient(135deg, rgba(255,255,255,.12), rgba(55,174,247,.12));
+      border:1px solid rgba(255,255,255,.66);
+      box-shadow:var(--shadow-soft);
+      white-space:nowrap;
+    }
+
+    .advantages-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:16px;
+    }
+
+    .adv-card{
+      border-radius:28px;
+      padding:20px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.2)),
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(60,174,248,.14));
+      border:1px solid rgba(255,255,255,.64);
+      box-shadow:var(--shadow-soft);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .adv-card::after{
+      content:"";
+      position:absolute;
+      right:-16px;
+      bottom:-14px;
+      width:90px;
+      height:90px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,.55), transparent 68%);
+      pointer-events:none;
+    }
+
+    .adv-card .top{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .adv-card .big-icon{
+      width:52px;
+      height:52px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      font-size:24px;
+      color:#1366b0;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.95), rgba(255,255,255,.36) 28%, transparent 29%),
+        linear-gradient(145deg, #edfaff, #a7e0ff 55%, #6ccdfd);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.95),
+        0 8px 16px rgba(40,117,189,.14);
+    }
+
+    .adv-card h3{
+      margin:0;
+      font-size:20px;
+      color:#1a5289;
+    }
+
+    .adv-card p{
+      margin:0;
+      color:#47719b;
+      font-weight:700;
+      line-height:1.6;
+      font-size:15px;
+    }
+
+    .promo-banner{
+      margin-top:20px;
+      border-radius:34px;
+      padding:24px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.22)),
+        linear-gradient(120deg, rgba(202,241,255,.8), rgba(94,189,245,.3) 45%, rgba(214,244,255,.86));
+      border:1px solid rgba(255,255,255,.7);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:18px;
+      align-items:center;
+    }
+
+    .promo-banner::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,.82), transparent 16%),
+        radial-gradient(circle at 82% 30%, rgba(255,255,255,.5), transparent 13%),
+        linear-gradient(100deg, transparent 0 18%, rgba(255,255,255,.28) 22%, transparent 27% 100%),
+        linear-gradient(103deg, transparent 0 26%, rgba(255,255,255,.34) 30%, transparent 35% 100%);
+      pointer-events:none;
+    }
+
+    .promo-banner h3{
+      margin:0 0 6px;
+      font-size:clamp(28px, 3.6vw, 46px);
+      color:#145088;
+      line-height:1.02;
+      position:relative;
+      z-index:1;
+    }
+
+    .promo-banner p{
+      margin:0;
+      color:#47709b;
+      font-weight:800;
+      font-size:17px;
+      position:relative;
+      z-index:1;
+    }
+
+    .discount-circle{
+      width:170px;
+      height:170px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      position:relative;
+      z-index:1;
+      background:
+        radial-gradient(circle at 32% 24%, rgba(255,255,255,.98), rgba(255,255,255,.4) 28%, transparent 29%),
+        linear-gradient(145deg, #77d6ff 0%, #238adb 58%, #84ddff 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.95),
+        0 18px 28px rgba(31,104,177,.24);
+      color:#fff;
+      text-align:center;
+      font-weight:900;
+      text-shadow:0 1px 0 rgba(0,0,0,.06);
+    }
+
+    .discount-circle span{
+      display:block;
+      line-height:.95;
+    }
+
+    .discount-circle .small{
+      font-size:16px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      opacity:.96;
+    }
+
+    .discount-circle .big{
+      font-size:54px;
+      margin-top:5px;
+    }
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:16px;
+      margin-top:4px;
+    }
+
+    .service-card{
+      border-radius:28px;
+      padding:20px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.18)),
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(60,174,248,.14));
+      border:1px solid rgba(255,255,255,.64);
+      box-shadow:var(--shadow-soft);
+      min-height:190px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .service-card::before{
+      content:"";
+      position:absolute;
+      inset:auto -20px -20px auto;
+      width:110px;
+      height:110px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,.36), transparent 70%);
+    }
+
+    .service-card .s-icon{
+      width:54px;
+      height:54px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      font-size:24px;
+      color:#1266b1;
+      margin-bottom:12px;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.95), rgba(255,255,255,.36) 28%, transparent 29%),
+        linear-gradient(145deg, #eefbff, #b6e7ff 55%, #72d0ff);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.95),
+        0 8px 16px rgba(40,117,189,.14);
+    }
+
+    .service-card h3{
+      margin:0 0 8px;
+      font-size:20px;
+      color:#194f86;
+    }
+
+    .service-card p{
+      margin:0;
+      color:#47719a;
+      line-height:1.55;
+      font-weight:700;
+      font-size:15px;
+    }
+
+    .contact-wrap{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .contacts-panel,
+    .booking-panel{
+      border-radius:30px;
+      padding:22px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.74), rgba(255,255,255,.22)),
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(60,174,248,.14));
+      border:1px solid rgba(255,255,255,.66);
+      box-shadow:var(--shadow-soft);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .contacts-panel::before,
+    .booking-panel::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(255,255,255,.36), transparent 22%);
+      pointer-events:none;
+    }
+
+    .contacts-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:14px;
+      position:relative;
+      z-index:1;
+    }
+
+    .contact-box{
+      border-radius:22px;
+      padding:16px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.18)),
+        linear-gradient(135deg, rgba(255,255,255,.06), rgba(50,166,244,.12));
+      border:1px solid rgba(255,255,255,.58);
+      box-shadow:0 8px 18px rgba(34, 112, 186, .09);
+    }
+
+    .contact-box .title{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:#1a518a;
+      font-weight:900;
+      margin-bottom:8px;
+      font-size:15px;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+
+    .contact-box .mini{
+      width:34px;
+      height:34px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      color:#1266af;
+      font-size:17px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.94), rgba(171,230,255,.74));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.95),
+        0 6px 12px rgba(38, 114, 186, .12);
+    }
+
+    .contact-box p{
+      margin:0;
+      color:#44709c;
+      font-weight:800;
+      line-height:1.55;
+      font-size:16px;
+    }
+
+    .booking-panel h3{
+      margin:0 0 10px;
+      font-size:26px;
+      color:#154c86;
+    }
+
+    .booking-panel p{
+      margin:0 0 18px;
+      color:#47719a;
+      font-weight:700;
+      line-height:1.6;
+      font-size:15px;
+      position:relative;
+      z-index:1;
+    }
+
+    .booking-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      position:relative;
+      z-index:1;
+    }
+
+    .booking-note{
+      margin-top:16px;
+      padding:14px 16px;
+      border-radius:18px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.64), rgba(255,255,255,.2));
+      border:1px solid rgba(255,255,255,.58);
+      color:#35689a;
+      font-weight:800;
+      font-size:14px;
+      position:relative;
+      z-index:1;
+    }
+
+    .final-panel{
+      margin-top:24px;
+      border-radius:36px;
+      padding:28px 24px 30px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.2)),
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,.8), transparent 18%),
+        radial-gradient(circle at 90% 20%, rgba(255,255,255,.62), transparent 16%),
+        linear-gradient(135deg, rgba(208,243,255,.9), rgba(102,191,245,.34) 50%, rgba(225,247,255,.86));
+      border:1px solid rgba(255,255,255,.74);
+      box-shadow:var(--shadow);
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .final-panel::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(100deg, transparent 0 10%, rgba(255,255,255,.28) 14%, transparent 18% 100%),
+        linear-gradient(104deg, transparent 0 18%, rgba(255,255,255,.3) 22%, transparent 26% 100%),
+        radial-gradient(circle at 18% 22%, rgba(255,255,255,.9) 0 1.5px, transparent 2px),
+        radial-gradient(circle at 82% 24%, rgba(255,255,255,.88) 0 2px, transparent 2.5px),
+        radial-gradient(circle at 74% 72%, rgba(255,255,255,.82) 0 1.5px, transparent 2px);
+      pointer-events:none;
+    }
+
+    .final-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:14px;
+      padding:10px 16px;
+      border-radius:999px;
+      color:#1d568e;
+      font-weight:900;
+      font-size:14px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.76), rgba(255,255,255,.26)),
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(57,170,246,.12));
+      border:1px solid rgba(255,255,255,.68);
+      box-shadow:var(--shadow-soft);
+      position:relative;
+      z-index:1;
+    }
+
+    .final-panel h2{
+      margin:0 auto 10px;
+      font-size:clamp(30px, 4.2vw, 54px);
+      line-height:1.03;
+      color:#154b83;
+      max-width:860px;
+      text-shadow:0 1px 0 rgba(255,255,255,.84);
+      position:relative;
+      z-index:1;
+    }
+
+    .final-panel p{
+      margin:0 auto;
+      max-width:760px;
+      font-size:18px;
+      line-height:1.65;
+      font-weight:800;
+      color:#46709a;
+      position:relative;
+      z-index:1;
+    }
+
+    .qualities{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      justify-content:center;
+      margin-top:22px;
+      position:relative;
+      z-index:1;
+    }
+
+    .quality{
+      padding:12px 18px;
+      border-radius:999px;
+      font-weight:900;
+      color:#1d568f;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.8), rgba(255,255,255,.26)),
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(57,170,246,.12));
+      border:1px solid rgba(255,255,255,.72);
+      box-shadow:var(--shadow-soft);
+      font-size:15px;
+    }
+
+    .footer-note{
+      text-align:center;
+      color:#4d7398;
+      font-weight:800;
+      font-size:13px;
+      margin:14px 0 0;
+      padding:0 8px 14px;
+    }
+
+    .sparkle-field{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      overflow:hidden;
+    }
+
+    .sparkle{
+      position:absolute;
+      width:10px;
+      height:10px;
+      transform:rotate(45deg);
+      opacity:.8;
+      animation: twinkle var(--d, 5s) ease-in-out infinite;
+      filter:drop-shadow(0 0 8px rgba(255,255,255,.8));
+    }
+
+    .sparkle::before,
+    .sparkle::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%, -50%);
+      background:rgba(255,255,255,.95);
+      border-radius:999px;
+    }
+
+    .sparkle::before{width:2px;height:10px}
+    .sparkle::after{width:10px;height:2px}
+
+    .flower{
+      position:absolute;
+      width:128px;
+      height:128px;
+      opacity:.42;
+      pointer-events:none;
+      filter:blur(.2px);
+    }
+
+    .flower .petal{
+      position:absolute;
+      width:42px;
+      height:64px;
+      left:43px;
+      top:8px;
+      transform-origin:50% 86%;
+      border-radius:50% 50% 48% 48%;
+      background:
+        radial-gradient(circle at 35% 28%, rgba(255,255,255,.96), rgba(255,255,255,.42) 30%, rgba(149,221,255,.45) 66%, rgba(82,178,239,.3) 100%);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
+    }
+
+    .flower .center{
+      position:absolute;
+      left:50%;
+      top:50%;
+      width:28px;
+      height:28px;
+      transform:translate(-50%, -50%);
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.95), rgba(255,255,255,.4) 35%, rgba(120,203,255,.7) 70%, rgba(33,119,195,.8) 100%);
+      box-shadow:0 0 14px rgba(255,255,255,.6);
+    }
+
+    .flower-1{left:-10px;bottom:18px}
+    .flower-2{right:12px;bottom:22px;transform:scale(1.1)}
+    .flower-3{right:44px;top:120px;transform:scale(.72);opacity:.34}
+    .flower-4{left:26px;top:130px;transform:scale(.66);opacity:.32}
+
+    @keyframes twinkle{
+      0%,100%{transform:rotate(45deg) scale(.75); opacity:.35}
+      50%{transform:rotate(45deg) scale(1.2); opacity:.95}
+    }
+
+    @media (max-width: 1080px){
+      .hero{grid-template-columns:1fr; min-height:auto}
+      .quick-points{grid-template-columns:1fr 1fr}
+      .advantages-grid{grid-template-columns:1fr}
+      .services-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
+      .contact-wrap{grid-template-columns:1fr}
+    }
+
+    @media (max-width: 760px){
+      .page{width:min(100% - 16px, 1180px); margin:12px auto 24px}
+      .hero{padding:16px; border-radius:28px}
+      .brand-card{padding:16px; gap:12px}
+      .logo{width:78px; height:78px; border-radius:22px}
+      .logo::before{height:48px; width:18px}
+      .logo::after{width:48px; height:18px}
+      .hero-copy{padding:16px 4px 0}
+      .quick-points{grid-template-columns:1fr}
+      .services-mini{grid-template-columns:1fr}
+      .promo-banner{grid-template-columns:1fr; text-align:left}
+      .discount-circle{width:132px;height:132px}
+      .discount-circle .small{font-size:13px}
+      .discount-circle .big{font-size:40px}
+      .services-grid{grid-template-columns:1fr}
+      .contacts-grid{grid-template-columns:1fr}
+      .advantages-grid{grid-template-columns:1fr}
+      .content-section{padding:16px; border-radius:26px}
+      .final-panel{padding:22px 16px 24px; border-radius:28px}
+      .brand-text h1{font-size:40px}
+      .brand-text p{font-size:18px}
+      .lead{font-size:16px}
+      .flower{display:none}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .sparkle,
+      .btn{animation:none; transition:none}
+    }
+  </style>
 </head>
 <body>
+  <div class="sparkle-field" id="sparkles"></div>
 
-    <!-- Hero Section -->
-    <section class="relative gradient-bg py-20 lg:py-32 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8">
-                    <div class="space-y-4">
-                        <h1 class="text-4xl lg:text-6xl font-bold text-gray-900">
-                            Доктор Плюс
-                        </h1>
-                        <p class="text-2xl lg:text-3xl text-blue-600 font-light">
-                            Современная стоматология для вашей улыбки
-                        </p>
-                        <p class="text-lg text-gray-600 max-w-xl">
-                            Профессиональное лечение зубов с применением новейших технологий и индивидуальным подходом к каждому пациенту
-                        </p>
-                    </div>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <button onclick="scrollToSection('contacts')" class="btn btn-primary px-8 py-6">
-                            Записаться на прием
-                        </button>
-                    </div>
-                </div>
+  <div class="page">
+    <div class="top-ribbons"></div>
 
-                <div class="relative">
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl">
-                        <img src="images/image_1.jpg" 
-                             alt="Современная стоматологическая клиника Доктор Плюс"
-                             class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-500 rounded-full opacity-20 blur-circle"></div>
-                    <div class="absolute -top-6 -left-6 w-40 h-40 bg-blue-300 rounded-full opacity-20 blur-circle"></div>
-                </div>
-            </div>
+    <section class="hero panel">
+      <div class="hero-bg-lines"></div>
+      <div class="hero-bloom"></div>
+
+      <div class="flower flower-3">
+        <div class="petal" style="transform:rotate(0deg)"></div>
+        <div class="petal" style="transform:rotate(72deg)"></div>
+        <div class="petal" style="transform:rotate(144deg)"></div>
+        <div class="petal" style="transform:rotate(216deg)"></div>
+        <div class="petal" style="transform:rotate(288deg)"></div>
+        <div class="center"></div>
+      </div>
+
+      <div class="hero-left">
+        <div class="brand-card">
+          <div class="logo" aria-hidden="true"></div>
+          <div class="brand-text">
+            <h1>«Доктор Плюс»</h1>
+            <p>Медицинский центр</p>
+          </div>
         </div>
+
+        <div class="hero-copy">
+          <h2 class="slogan">Ключ к здоровью — это забота о себе</h2>
+          <p class="lead">
+            Современный медицинский центр с внимательным подходом, продуманной диагностикой и удобной записью.
+            Всё, чтобы путь к лечению был спокойным, понятным и комфортным.
+          </p>
+
+          <div class="quick-points">
+            <div class="pill">Комфортная запись</div>
+            <div class="pill">Точная диагностика</div>
+            <div class="pill">Забота и внимание</div>
+          </div>
+
+          <div class="hero-advantages">
+            <div class="adv">
+              <div class="adv-icon">✦</div>
+              <div>
+                <h3>Премиальный подход к медицине</h3>
+                <p>Чёткая организация приёма, комфортная атмосфера и внимание к деталям на каждом этапе.</p>
+              </div>
+            </div>
+
+            <div class="adv">
+              <div class="adv-icon">✚</div>
+              <div>
+                <h3>Современные методы диагностики</h3>
+                <p>Понятные решения, актуальные исследования и уверенность в каждом следующем шаге.</p>
+              </div>
+            </div>
+
+            <div class="adv">
+              <div class="adv-icon">❖</div>
+              <div>
+                <h3>Индивидуальное внимание к каждому пациенту</h3>
+                <p>Спокойная коммуникация, удобная запись и рекомендации, которые легко воспринимать.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contacts">Записаться на приём</a>
+            <a class="btn btn-secondary" href="#services">Посмотреть направления</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="promo-card">
+          <div class="promo-top">
+            <div class="promo-badge">🧪</div>
+            <div>Анализы</div>
+          </div>
+          <p class="promo-title">Эксклюзивное предложение</p>
+          <p class="promo-discount">Скидка 30%</p>
+          <p class="promo-note">Анализы всех видов — удобно, быстро и с внимательным сопровождением.</p>
+          <div class="decor-orbs">
+            <div class="orb"></div>
+            <div class="orb"></div>
+            <div class="orb"></div>
+            <div class="orb"></div>
+            <div class="orb"></div>
+          </div>
+        </div>
+
+        <div class="services-mini">
+          <div class="service-mini">
+            <div class="icon">🩺</div>
+            <h4>Консультации</h4>
+            <p>Удобный старт для диагностики, лечения и дальнейшего наблюдения.</p>
+          </div>
+          <div class="service-mini">
+            <div class="icon">🦷</div>
+            <h4>Стоматология</h4>
+            <p>Забота о здоровье и комфорте с современным подходом к приёму.</p>
+          </div>
+          <div class="service-mini">
+            <div class="icon">🧬</div>
+            <h4>Диагностика</h4>
+            <p>Исследования и обследования, которые помогают быстро понять ситуацию.</p>
+          </div>
+          <div class="service-mini">
+            <div class="icon">💠</div>
+            <h4>Забота о пациенте</h4>
+            <p>Понятные ответы, аккуратная организация и удобные каналы связи.</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <h3>Персональная запись</h3>
+          <div class="contact-list">
+            <div class="contact-item">
+              <div class="c-icon">☎</div>
+              <div><strong>Телефон</strong>+7 (903) 775-19-49</div>
+            </div>
+            <div class="contact-item">
+              <div class="c-icon">✈</div>
+              <div><strong>Telegram</strong>@doctorplus</div>
+            </div>
+            <div class="contact-item">
+              <div class="c-icon">🟢</div>
+              <div><strong>WhatsApp</strong>+7 (903) 775-19-49</div>
+            </div>
+            <div class="contact-item">
+              <div class="c-icon">⌂</div>
+              <div><strong>Адрес</strong>Москва, ул. Хачатуряна, 12</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flower flower-4">
+        <div class="petal" style="transform:rotate(0deg)"></div>
+        <div class="petal" style="transform:rotate(72deg)"></div>
+        <div class="petal" style="transform:rotate(144deg)"></div>
+        <div class="petal" style="transform:rotate(216deg)"></div>
+        <div class="petal" style="transform:rotate(288deg)"></div>
+        <div class="center"></div>
+      </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center mb-16 space-y-4">
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">
-                    Наши услуги
-                </h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Полный спектр стоматологических услуг для здоровья и красоты вашей улыбки
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service Card 1 -->
-                <div class="card border-2 border-gray-100 hover:border-blue-200 hover:shadow-lg rounded-lg p-8 space-y-4 group">
-                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center icon-circle">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 icon-white">
-                            <path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900">
-                        Лечение зубов
-                    </h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Профессиональное лечение кариеса и других заболеваний зубов с применением современных материалов
-                    </p>
-                </div>
-
-                <!-- Service Card 2 -->
-                <div class="card border-2 border-gray-100 hover:border-blue-200 hover:shadow-lg rounded-lg p-8 space-y-4 group">
-                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center icon-circle">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 icon-white">
-                            <rect width="18" height="18" x="3" y="3" rx="2"/>
-                            <path d="M3 9h18"/>
-                            <path d="M9 21V9"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900">
-                        Имплантация
-                    </h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Восстановление утраченных зубов с помощью надежных имплантов премиум-класса
-                    </p>
-                </div>
-
-                <!-- Service Card 3 -->
-                <div class="card border-2 border-gray-100 hover:border-blue-200 hover:shadow-lg rounded-lg p-8 space-y-4 group">
-                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center icon-circle">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 icon-white">
-                            <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
-                            <path d="M5 3v4"/>
-                            <path d="M19 17v4"/>
-                            <path d="M3 5h4"/>
-                            <path d="M17 19h4"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900">
-                        Профессиональная чистка
-                    </h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Комплексная гигиена полости рта для здоровья зубов и десен
-                    </p>
-                </div>
-
-                <!-- Service Card 4 -->
-                <div class="card border-2 border-gray-100 hover:border-blue-200 hover:shadow-lg rounded-lg p-8 space-y-4 group">
-                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center icon-circle">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 icon-white">
-                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900">
-                        Отбеливание
-                    </h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Безопасное отбеливание зубов для белоснежной улыбки
-                    </p>
-                </div>
-
-                <!-- Service Card 5 -->
-                <div class="card border-2 border-gray-100 hover:border-blue-200 hover:shadow-lg rounded-lg p-8 space-y-4 group">
-                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center icon-circle">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 icon-white">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                            <line x1="9" x2="9.01" y1="9" y2="9"/>
-                            <line x1="15" x2="15.01" y1="9" y2="9"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900">
-                        Ортодонтия
-                    </h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Исправление прикуса и выравнивание зубов для красивой улыбки
-                    </p>
-                </div>
-            </div>
+    <section class="content-section panel" id="advantages">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Преимущества</h2>
+          <p class="section-sub">Коротко, ясно и по делу — всё, что помогает чувствовать уверенность и комфорт при обращении в «Доктор Плюс».</p>
         </div>
+        <div class="section-chip">Забота • Точность • Доверие</div>
+      </div>
+
+      <div class="advantages-grid">
+        <article class="adv-card">
+          <div class="top">
+            <div class="big-icon">✚</div>
+            <h3>Современный подход</h3>
+          </div>
+          <p>Мы делаем медицинскую помощь понятной, последовательной и удобной — без перегруженности и лишней сложности.</p>
+        </article>
+
+        <article class="adv-card">
+          <div class="top">
+            <div class="big-icon">💎</div>
+            <h3>Комфортная атмосфера</h3>
+          </div>
+          <p>Мягкая подача, внимательное сопровождение и спокойное пространство, где легко сосредоточиться на здоровье.</p>
+        </article>
+
+        <article class="adv-card">
+          <div class="top">
+            <div class="big-icon">🫶</div>
+            <h3>Личное внимание</h3>
+          </div>
+          <p>Удобная запись, понятная связь и ощущение, что к вашему вопросу действительно относятся серьёзно и бережно.</p>
+        </article>
+      </div>
+
+      <div class="promo-banner" id="promotion">
+        <div>
+          <h3>Анализы всех видов</h3>
+          <p>Эксклюзивное предложение для новых пациентов — выгодно, удобно и с быстрым оформлением записи.</p>
+        </div>
+        <div class="discount-circle">
+          <div>
+            <span class="small">Скидка</span>
+            <span class="big">30%</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Advantages Section -->
-    <section class="py-20 gradient-blue-bg">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center mb-16 space-y-4">
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">
-                    Почему выбирают нас
-                </h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Мы создаем условия для качественного лечения и комфорта наших пациентов
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Advantage 1 -->
-                <div class="text-center space-y-4 group">
-                    <div class="mx-auto w-20 h-20 bg-white rounded-full shadow-lg flex items-center justify-center hover:shadow-xl hover:scale-110 transition-all duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600">
-                            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
-                            <path d="m9 12 2 2 4-4"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 px-4">
-                        Современное оборудование
-                    </h3>
-                    <p class="text-gray-600 leading-relaxed px-4">
-                        Используем новейшие технологии и материалы мировых производителей
-                    </p>
-                </div>
-
-                <!-- Advantage 2 -->
-                <div class="text-center space-y-4 group">
-                    <div class="mx-auto w-20 h-20 bg-white rounded-full shadow-lg flex items-center justify-center hover:shadow-xl hover:scale-110 transition-all duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600">
-                            <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/>
-                            <circle cx="12" cy="8" r="6"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 px-4">
-                        Опытные врачи
-                    </h3>
-                    <p class="text-gray-600 leading-relaxed px-4">
-                        Команда профессионалов с многолетним опытом и постоянным повышением квалификации
-                    </p>
-                </div>
-
-                <!-- Advantage 3 -->
-                <div class="text-center space-y-4 group">
-                    <div class="mx-auto w-20 h-20 bg-white rounded-full shadow-lg flex items-center justify-center hover:shadow-xl hover:scale-110 transition-all duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600">
-                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 px-4">
-                        Комфортное лечение
-                    </h3>
-                    <p class="text-gray-600 leading-relaxed px-4">
-                        Безболезненные процедуры в уютной атмосфере с заботой о вашем комфорте
-                    </p>
-                </div>
-
-                <!-- Advantage 4 -->
-                <div class="text-center space-y-4 group">
-                    <div class="mx-auto w-20 h-20 bg-white rounded-full shadow-lg flex items-center justify-center hover:shadow-xl hover:scale-110 transition-all duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600">
-                            <circle cx="12" cy="12" r="10"/>
-                            <polyline points="12 6 12 12 16 14"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 px-4">
-                        Внимательное отношение
-                    </h3>
-                    <p class="text-gray-600 leading-relaxed px-4">
-                        Индивидуальный подход к каждому пациенту и забота о вашем здоровье
-                    </p>
-                </div>
-            </div>
+    <section class="content-section panel" id="services">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Медицинские направления</h2>
+          <p class="section-sub">Основные услуги и направления, которые помогают быстро сориентироваться и выбрать нужный формат обращения.</p>
         </div>
+        <div class="section-chip">Понятная навигация по услугам</div>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <div class="s-icon">🩺</div>
+          <h3>Терапия</h3>
+          <p>Первичная консультация, сопровождение и продуманный маршрут к обследованию и лечению.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="s-icon">🦷</div>
+          <h3>Стоматология</h3>
+          <p>Профилактика, лечение и забота о комфорте пациента на каждом этапе визита.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="s-icon">🌿</div>
+          <h3>Гинекология</h3>
+          <p>Деликатный подход, внимание к деталям и удобная организация приёма.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="s-icon">🔬</div>
+          <h3>Диагностика</h3>
+          <p>Современные исследования и понятные результаты, которые помогают быстро принять решение.</p>
+        </article>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="relative order-2 lg:order-1">
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl">
-                        <img src="images/image_2.jpg" 
-                             alt="Счастливая пациентка клиники Доктор Плюс"
-                             class="w-full h-full object-cover">
-                    </div>
-                </div>
-
-                <div class="space-y-6 order-1 lg:order-2">
-                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">
-                        О клинике Доктор Плюс
-                    </h2>
-                    <div class="space-y-4 text-gray-600 text-lg leading-relaxed">
-                        <p>
-                            Мы — современная стоматологическая клиника, которая объединяет передовые технологии, высокий профессионализм врачей и искреннюю заботу о пациентах.
-                        </p>
-                        <p>
-                            Наша философия проста: каждый человек заслуживает здоровую и красивую улыбку. Мы создаем комфортную атмосферу, используем только проверенные методики и материалы, а главное — относимся к каждому пациенту с вниманием и уважением.
-                        </p>
-                        <p>
-                            В клинике Доктор Плюс вы получите качественное лечение без боли и стресса. Доверьте свою улыбку профессионалам!
-                        </p>
-                    </div>
-
-                    <div class="grid grid-cols-3 gap-6 pt-8">
-                        <div class="text-center">
-                            <div class="text-4xl font-bold text-blue-600">15+</div>
-                            <div class="text-gray-600 mt-2">лет опыта</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-4xl font-bold text-blue-600">5000+</div>
-                            <div class="text-gray-600 mt-2">пациентов</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-4xl font-bold text-blue-600">100%</div>
-                            <div class="text-gray-600 mt-2">качество</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="content-section panel" id="contacts">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Контакты и запись</h2>
+          <p class="section-sub">Удобные способы связи, чтобы быстро записаться на приём и получить нужную информацию.</p>
         </div>
+        <div class="section-chip">Связь без лишних шагов</div>
+      </div>
+
+      <div class="contact-wrap">
+        <div class="contacts-panel">
+          <div class="contacts-grid">
+            <div class="contact-box">
+              <div class="title"><span class="mini">☎</span>Телефон</div>
+              <p>+7 (903) 775-19-49</p>
+            </div>
+
+            <div class="contact-box">
+              <div class="title"><span class="mini">✈</span>Telegram</div>
+              <p>@doctorplus</p>
+            </div>
+
+            <div class="contact-box">
+              <div class="title"><span class="mini">🟢</span>WhatsApp</div>
+              <p>+7 (903) 775-19-49</p>
+            </div>
+
+            <div class="contact-box">
+              <div class="title"><span class="mini">✉</span>E-mail</div>
+              <p>info@doctorplus.ru</p>
+            </div>
+
+            <div class="contact-box" style="grid-column:1 / -1">
+              <div class="title"><span class="mini">⌂</span>Адрес</div>
+              <p>Москва, ул. Хачатуряна, 12</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-panel">
+          <h3>Запишитесь на приём в «Доктор Плюс»</h3>
+          <p>
+            Выберите удобный способ связи, чтобы уточнить направление, подобрать время визита
+            и быстро получить подтверждение записи.
+          </p>
+
+          <div class="booking-actions">
+            <a href="tel:+79037751949" class="btn btn-primary">Позвонить</a>
+            <a href="https://t.me/doctorplus" class="btn btn-secondary">Написать в Telegram</a>
+            <a href="https://wa.me/79037751949" class="btn btn-secondary">Написать в WhatsApp</a>
+            <a href="mailto:info@doctorplus.ru" class="btn btn-secondary">Отправить e-mail</a>
+          </div>
+
+          <div class="booking-note">
+            Удобно для первичной консультации, уточнения услуг, стоимости и времени посещения.
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Appointment Section -->
-    <section id="appointment" class="py-20 gradient-blue-solid text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <img src="images/image_3.jpg" 
-                 alt="Профессиональная стоматология"
-                 class="w-full h-full object-cover">
-        </div>
+    <section class="final-panel panel">
+      <div class="flower flower-1">
+        <div class="petal" style="transform:rotate(0deg)"></div>
+        <div class="petal" style="transform:rotate(72deg)"></div>
+        <div class="petal" style="transform:rotate(144deg)"></div>
+        <div class="petal" style="transform:rotate(216deg)"></div>
+        <div class="petal" style="transform:rotate(288deg)"></div>
+        <div class="center"></div>
+      </div>
 
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-            <div class="max-w-3xl mx-auto text-center space-y-8">
-                <h2 class="text-3xl lg:text-4xl font-bold">
-                    Запишитесь на прием прямо сейчас
-                </h2>
-                <p class="text-xl text-blue-100">
-                    Позаботьтесь о здоровье своих зубов. Наши специалисты ждут вас!
-                </p>
+      <div class="flower flower-2">
+        <div class="petal" style="transform:rotate(0deg)"></div>
+        <div class="petal" style="transform:rotate(72deg)"></div>
+        <div class="petal" style="transform:rotate(144deg)"></div>
+        <div class="petal" style="transform:rotate(216deg)"></div>
+        <div class="petal" style="transform:rotate(288deg)"></div>
+        <div class="center"></div>
+      </div>
 
-                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center pt-4">
-                    <div class="flex items-center gap-3 text-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M8 2v4"/>
-                            <path d="M16 2v4"/>
-                            <rect width="18" height="18" x="3" y="4" rx="2"/>
-                            <path d="M3 10h18"/>
-                        </svg>
-                        <span>Удобное время</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"/>
-                            <polyline points="12 6 12 12 16 14"/>
-                        </svg>
-                        <span>Без очередей</span>
-                    </div>
-                </div>
+      <div class="final-kicker">✦ «Доктор Плюс» • медицина высокого уровня</div>
+      <h2>Качество, забота и доверие — в красивом, современном и понятном медицинском сервисе</h2>
+      <p>
+        «Доктор Плюс» — это продуманный подход к здоровью, комфортная запись, аккуратная организация
+        и ощущение уверенности с первого контакта.
+      </p>
 
-                <div class="pt-4">
-                    <button onclick="scrollToSection('contacts')" class="btn btn-white px-10 py-6 shadow-xl hover:shadow-2xl">
-                        Записаться на прием
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-blue-400 rounded-full opacity-20 blur-circle"></div>
-        <div class="absolute -top-20 -right-20 w-80 h-80 bg-blue-300 rounded-full opacity-20 blur-circle"></div>
+      <div class="qualities">
+        <div class="quality">Качество</div>
+        <div class="quality">Забота</div>
+        <div class="quality">Доверие</div>
+        <div class="quality">Точность</div>
+        <div class="quality">Современный подход</div>
+      </div>
     </section>
 
-    <!-- Contacts Section -->
-    <section id="contacts" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center mb-16 space-y-4">
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">
-                    Контакты
-                </h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Свяжитесь с нами удобным способом. Мы всегда рады ответить на ваши вопросы!
-                </p>
-            </div>
+    <div class="bottom-ribbons"></div>
+    <div class="footer-note">«Доктор Плюс» — яркий медицинский сервис с удобной записью и внимательным подходом.</div>
+  </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Contact 1 -->
-                <a href="tel:+79001234567" class="block">
-                    <div class="gradient-bg p-8 rounded-2xl border-2 border-blue-100 hover:border-blue-300 hover:shadow-lg transition-all duration-300 h-full group">
-                        <div class="flex flex-col items-center text-center space-y-4">
-                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center icon-circle">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 icon-white">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                                </svg>
-                            </div>
-                            <div class="space-y-2">
-                                <h3 class="text-lg font-semibold text-gray-900">
-                                    Телефон
-                                </h3>
-                                <p class="text-gray-600 font-medium">
-                                    +7 (900) 123-45-67
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+  <script>
+    (function(){
+      const field = document.getElementById('sparkles');
+      const count = window.innerWidth < 760 ? 18 : 34;
 
-                <!-- Contact 2 -->
-                <a href="https://t.me/doctorplus" target="_blank" rel="noopener noreferrer" class="block">
-                    <div class="gradient-bg p-8 rounded-2xl border-2 border-blue-100 hover:border-blue-300 hover:shadow-lg transition-all duration-300 h-full group">
-                        <div class="flex flex-col items-center text-center space-y-4">
-                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center icon-circle">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 icon-white">
-                                    <path d="m22 2-7 20-4-9-9-4Z"/>
-                                    <path d="M22 2 11 13"/>
-                                </svg>
-                            </div>
-                            <div class="space-y-2">
-                                <h3 class="text-lg font-semibold text-gray-900">
-                                    Telegram
-                                </h3>
-                                <p class="text-gray-600 font-medium">
-                                    @doctorplus
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Contact 3 -->
-                <a href="mailto:info@doctorplus.ru" class="block">
-                    <div class="gradient-bg p-8 rounded-2xl border-2 border-blue-100 hover:border-blue-300 hover:shadow-lg transition-all duration-300 h-full group">
-                        <div class="flex flex-col items-center text-center space-y-4">
-                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center icon-circle">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 icon-white">
-                                    <rect width="20" height="16" x="2" y="4" rx="2"/>
-                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                                </svg>
-                            </div>
-                            <div class="space-y-2">
-                                <h3 class="text-lg font-semibold text-gray-900">
-                                    E-mail
-                                </h3>
-                                <p class="text-gray-600 font-medium">
-                                    info@doctorplus.ru
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Contact 4 -->
-                <div>
-                    <div class="gradient-bg p-8 rounded-2xl border-2 border-blue-100 hover:border-blue-300 hover:shadow-lg transition-all duration-300 h-full group">
-                        <div class="flex flex-col items-center text-center space-y-4">
-                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center icon-circle">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 icon-white">
-                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-                                    <circle cx="12" cy="10" r="3"/>
-                                </svg>
-                            </div>
-                            <div class="space-y-2">
-                                <h3 class="text-lg font-semibold text-gray-900">
-                                    Адрес
-                                </h3>
-                                <p class="text-gray-600 font-medium">
-                                    Москва, ул. Примерная, д. 10
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-12">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-8 mb-8">
-                <div class="space-y-4">
-                    <h3 class="text-2xl font-bold text-white">Доктор Плюс</h3>
-                    <p class="text-gray-400 max-w-md">
-                        Современная стоматологическая клиника с заботой о вашей улыбке
-                    </p>
-                </div>
-                
-                <div class="space-y-4">
-                    <h4 class="text-lg font-semibold text-white">Часы работы</h4>
-                    <div class="space-y-2 text-gray-400">
-                        <p>Понедельник - Пятница: 9:00 - 20:00</p>
-                        <p>Суббота: 10:00 - 18:00</p>
-                        <p>Воскресенье: выходной</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
-                <p>&copy; 2026 Доктор Плюс. Все права защищены.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        function scrollToSection(sectionId) {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    </script>
-
+      for(let i = 0; i < count; i++){
+        const s = document.createElement('span');
+        s.className = 'sparkle';
+        s.style.left = Math.random() * 100 + 'vw';
+        s.style.top = Math.random() * 100 + 'vh';
+        s.style.opacity = (0.25 + Math.random() * 0.7).toFixed(2);
+        s.style.transform = 'rotate(45deg) scale(' + (0.5 + Math.random() * 1.2).toFixed(2) + ')';
+        s.style.setProperty('--d', (3 + Math.random() * 5).toFixed(2) + 's');
+        field.appendChild(s);
+      }
+    })();
+  </script>
 </body>
 </html>
