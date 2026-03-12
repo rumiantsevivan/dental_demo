@@ -28,14 +28,30 @@
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{
+
+    html, body{
+      min-height:100vh;
+      min-height:100svh;
       margin:0;
+    }
+
+    body{
       font-family: Arial, Helvetica, sans-serif;
       color:var(--text);
-      background:#d9f3ff;
-      min-height:100vh;
+      background-image:url("img/bg.jpg");
+      background-size:cover;
+      background-position:center center;
+      background-repeat:no-repeat;
+      background-attachment:fixed;
       overflow-x:hidden;
       position:relative;
+    }
+
+    .hero,
+    .main-section,
+    .page-wrapper{
+      min-height:100vh;
+      min-height:100svh;
     }
 
     body::before,
