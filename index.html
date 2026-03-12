@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>«Доктор Плюс» — Медицинский центр</title>
   <style>
     :root{
@@ -38,8 +38,11 @@
     body{
       font-family: Arial, Helvetica, sans-serif;
       color:var(--text);
-      background: url("aqua-overlay.png") center / cover no-repeat fixed;
-      min-height:100dvh;
+      background-image:url("img/bg.jpg");
+      background-size:cover;
+      background-position:center center;
+      background-repeat:no-repeat;
+      background-attachment:fixed;
       overflow-x:hidden;
       position:relative;
     }
