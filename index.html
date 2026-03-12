@@ -1444,10 +1444,13 @@
 
     .aqua-overlay{
       position:fixed;
-      inset:0;
-      background:url("aqua-overlay.png") center / cover no-repeat;
+      top:-8vh;
+      right:-8vw;
+      bottom:-8vh;
+      left:-8vw;
+      background:url("aqua-overlay.png") center center / cover no-repeat;
       pointer-events:none;
-      z-index:-1;
+      z-index:0;
       opacity:1;
       mix-blend-mode:normal;
       filter:none;
@@ -1455,7 +1458,7 @@
 
     .page > *{
       position:relative;
-      z-index:1;
+      z-index:2;
     }
 
     .hero,
@@ -1584,6 +1587,14 @@
       display:flex;
       flex-direction:column;
       justify-content:flex-start;
+    }
+
+    html, body{
+      min-height:100%;
+    }
+
+    body{
+      overflow-x:hidden;
     }
   </style>
 </head>
