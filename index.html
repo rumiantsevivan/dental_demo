@@ -269,6 +269,7 @@
       display:flex;
       flex-direction:column;
       justify-content:space-between;
+      min-width:0;
     }
 
     .brand-card{
@@ -372,16 +373,32 @@
       max-width:760px;
       margin:0 auto;
       text-align:center;
+      container-type:inline-size;
+      min-width:0;
+    }
+
+    .hero-copy > .promo-card{
+      width:100%;
+      margin-bottom:20px;
     }
 
     .slogan{
-      margin:10px 0 18px;
-      font-size:56px;
+      margin:10px auto 18px;
+      /* vw ignores real column width; cqw tracks .hero-copy so one line fits beside sidebar */
+      font-size:clamp(10px, 3.4vw, 30px);
       line-height:1.05;
       font-weight:800;
       color:#164a84;
       text-shadow:0 1px 0 rgba(255,255,255,.88);
-      max-width:740px;
+      max-width:100%;
+      white-space:nowrap;
+      letter-spacing:-0.02em;
+    }
+
+    @supports (font-size:1cqw){
+      .slogan{
+        font-size:clamp(9px, 4.15cqw, 30px);
+      }
     }
 
     .lead{
@@ -997,6 +1014,61 @@
       font-size:15px;
     }
 
+    .doctors-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:16px;
+    }
+
+    .doctor-card{
+      border-radius:28px;
+      padding:16px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.18)),
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(60,174,248,.14));
+      border:1px solid rgba(255,255,255,.64);
+      box-shadow:var(--shadow-soft);
+      text-align:center;
+    }
+
+    .doctor-photo{
+      width:100%;
+      height:auto;
+      aspect-ratio:auto;
+      object-fit:contain;
+      border-radius:20px;
+      display:block;
+      margin-bottom:14px;
+      background:transparent;
+      filter:none !important;
+      -webkit-filter:none !important;
+      mix-blend-mode:normal !important;
+      opacity:1 !important;
+    }
+
+    .doctors-grid .doctor-card:first-child .doctor-photo{
+      filter:none !important;
+      -webkit-filter:none !important;
+      mix-blend-mode:normal !important;
+      opacity:1 !important;
+    }
+
+    .doctor-role{
+      margin:0 0 6px;
+      color:#44709c;
+      font-weight:800;
+      font-size:16px;
+      line-height:1.35;
+    }
+
+    .doctor-name{
+      margin:0;
+      color:#194f86;
+      font-weight:900;
+      font-size:20px;
+      line-height:1.2;
+    }
+
     .contact-wrap{
       display:grid;
       grid-template-columns:1.05fr .95fr;
@@ -1567,6 +1639,7 @@
       .quick-points{grid-template-columns:1fr 1fr}
       .advantages-grid{grid-template-columns:1fr}
       .services-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
+      .doctors-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
       .contact-wrap{grid-template-columns:1fr}
     }
 
@@ -1605,6 +1678,7 @@
       .discount-circle .small{font-size:13px}
       .discount-circle .big{font-size:40px}
       .services-grid{grid-template-columns:1fr}
+      .doctors-grid{grid-template-columns:1fr}
       .contacts-grid{grid-template-columns:1fr}
       .advantages-grid{grid-template-columns:1fr}
       .content-section{padding:16px; border-radius:26px}
@@ -1858,6 +1932,23 @@
         </div>
 
         <div class="hero-copy">
+          <div class="promo-card">
+            <div class="promo-top">
+              <div class="promo-badge">🧪</div>
+              <div>Анализы</div>
+            </div>
+            <p class="promo-title">Эксклюзивное предложение</p>
+            <p class="promo-discount">Скидка 30%</p>
+            <p class="promo-note">Анализы всех видов — удобно, быстро и с внимательным сопровождением.</p>
+            <div class="decor-orbs">
+              <div class="orb"></div>
+              <div class="orb"></div>
+              <div class="orb"></div>
+              <div class="orb"></div>
+              <div class="orb"></div>
+            </div>
+          </div>
+
           <h2 class="slogan">Ключ к здоровью — это забота о себе</h2>
           <p class="lead">
             Современный медицинский центр с внимательным подходом, продуманной диагностикой и удобной записью.
@@ -1903,23 +1994,6 @@
       </div>
 
       <div class="hero-right">
-        <div class="promo-card">
-          <div class="promo-top">
-            <div class="promo-badge">🧪</div>
-            <div>Анализы</div>
-          </div>
-          <p class="promo-title">Эксклюзивное предложение</p>
-          <p class="promo-discount">Скидка 30%</p>
-          <p class="promo-note">Анализы всех видов — удобно, быстро и с внимательным сопровождением.</p>
-          <div class="decor-orbs">
-            <div class="orb"></div>
-            <div class="orb"></div>
-            <div class="orb"></div>
-            <div class="orb"></div>
-            <div class="orb"></div>
-          </div>
-        </div>
-
         <div class="services-mini">
           <div class="service-mini">
             <div class="icon">🩺</div>
@@ -2050,6 +2124,35 @@
       </div>
     </section>
 
+    <section class="content-section panel" id="doctors">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Наши врачи</h2>
+          <p class="section-sub">Профессиональная команда специалистов с внимательным подходом к каждому пациенту.</p>
+        </div>
+      </div>
+
+      <div class="doctors-grid">
+        <article class="doctor-card">
+          <img class="doctor-photo" src="1.PNG" alt="Врач стоматолог Нуржигит Эсенбаевич">
+          <p class="doctor-role">Врач стоматолог</p>
+          <p class="doctor-name">Нуржигит Эсенбаевич</p>
+        </article>
+
+        <article class="doctor-card">
+          <img class="doctor-photo" src="2.PNG" alt="Акушер-гинеколог Акылай Алмазбековна">
+          <p class="doctor-role">Акушер-гинеколог</p>
+          <p class="doctor-name">Акылай Алмазбековна</p>
+        </article>
+
+        <article class="doctor-card">
+          <img class="doctor-photo" src="3.PNG" alt="Семейный врач Казыбек Жаркынбаевич">
+          <p class="doctor-role">Семейный врач</p>
+          <p class="doctor-name">Казыбек Жаркынбаевич</p>
+        </article>
+      </div>
+    </section>
+
     <section class="final-panel panel">
       <div class="flower flower-1">
         <div class="petal" style="transform:rotate(0deg)"></div>
@@ -2111,7 +2214,7 @@
 
       <div class="side-contact-item">
         <div class="side-contact-label">WHATSAPP</div>
-        <div class="side-contact-value">+7 (966) 335-11-55 / +7 (903) 775-19-49</div>
+        <div class="side-contact-value">+7 (966) 335-11-55<br>+7 (903) 775-19-49</div>
       </div>
 
       <div class="side-contact-item">
@@ -2121,7 +2224,7 @@
 
       <div class="side-contact-item">
         <div class="side-contact-label">АДРЕС</div>
-        <div class="side-contact-value">Москва, ул. Хачатуряна, 12, к.3</div>
+        <div class="side-contact-value">Москва, метро Отрадное,<br>ул. Хачатуряна, 12, к.3</div>
       </div>
 
     </div>
